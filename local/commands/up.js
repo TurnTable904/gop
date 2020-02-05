@@ -10,7 +10,7 @@ module.exports.handler = async argv => {
   }
 
   const tasks = new Listr([
-    require('../tasks/boot'),
+    require('../tasks/start'),
   ], {
     renderer
   });
