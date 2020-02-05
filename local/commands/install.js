@@ -14,7 +14,7 @@ module.exports.handler = async argv => {
     require('../tasks/cleanup'),
     require('../tasks/provision-elasticsearch'),
     require('../tasks/install-minds'),
-    // require('../tasks/restart'),
+    require('../tasks/restart'),
   ], {
     renderer
   });

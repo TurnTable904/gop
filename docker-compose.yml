@@ -9,11 +9,11 @@ services:
   nginx:
     build:
       context: ./containers/nginx
-      dockerfile: ./Dockerfile.dev-sse
+      dockerfile: ./Dockerfile.dev-ssr
     mem_limit: 512MB
     depends_on:
       - php-fpm
-      - front
+      - front-live-server
     ports:
       - "8080:80"
     networks:
@@ -25,7 +25,17 @@ services:
 
   ## WEB APP
 
+  front-live-server:
+    build:
+      context: ./front/containers/live-server
+      dockerfile: ./Dockerfile
+    networks:
+      - app
+    volumes:
+      - ./front/:/var/www/Minds/front:cached
+
   front:
+    # Static server
     build:
       context: ./front/dist
       dockerfile: ../containers/server/Dockerfile
