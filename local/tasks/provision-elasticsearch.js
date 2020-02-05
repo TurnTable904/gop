@@ -5,12 +5,16 @@ module.exports = {
   title: 'Provisioning ElasticSearch',
   task: () => new Listr([
     {
-      title: 'Registering ElasticSearch 5.x indices',
-      task: () => exec('docker-compose', ['up', 'elasticsearch-legacy-provisioner'])
+      title: 'Creating 5.x-compatible indices',
+      task: () => exec('docker-compose', ['run', 'elasticsearch-legacy-provisioner'])
     },
     {
-      title: 'Registering ElasticSearch 6.x indices+',
-      task: () => exec('docker-compose', ['up', 'elasticsearch-provisioner'])
+      title: 'Stopping 5.x container',
+      task: () => exec('docker-compose', ['stop', 'elasticsearch-legacy'])
+    },
+    {
+      title: 'Creating indices',
+      task: () => exec('docker-compose', ['run', 'elasticsearch-provisioner'])
     },
   ])
 };
