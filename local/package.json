@@ -1,0 +1,16 @@
+{
+  "name": "minds-local-infrastructure",
+  "version": "0.1.0",
+  "description": "",
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "yargs": "^15.1.0",
+    "listr": "^0.14.3",
+    "execa": "^4.0.0"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later"
+}
