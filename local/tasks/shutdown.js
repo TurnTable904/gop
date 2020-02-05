@@ -1,7 +1,7 @@
 const exec = require('../lib/exec');
 
 module.exports = {
-  title: 'Shutting down',
+  title: 'Stopping containers',
   task: () => exec('docker-compose', ['down'])
 };
 

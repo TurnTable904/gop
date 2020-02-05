@@ -95,7 +95,6 @@ services:
       - elasticsearch
       - rabbitmq
       - redis
-      - sync-engine
     networks:
       - app
     volumes:

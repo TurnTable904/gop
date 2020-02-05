@@ -6,7 +6,7 @@ const exists = util.promisify(fs.exists);
 const rename = util.promisify(fs.rename);
 
 module.exports = {
-  title: 'Pruning engine/settings.php',
+  title: 'Pruning engine settings script',
   task: async (ctx, task) => {
     const settingsPhp = cwd('engine', 'settings.php');
 
