@@ -20,7 +20,7 @@ module.exports = {
         const settingsPhp = cwd('engine', 'settings.php');
 
         if (await exists(settingsPhp)) {
-          const newName = cwd('engine', `settings-${Date.now()}.php`);
+          const newName = cwd('engine', `settings.php-${Date.now()}.bak`);
           return await rename(settingsPhp, newName);
         } else {
           return task.skip('No settings.php file present')
