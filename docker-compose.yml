@@ -47,15 +47,17 @@ services:
     volumes:
       - ./front/:/var/www/Minds/front:delegated
 
-  front:
-    # Static server
-    build:
-      context: ./front/dist
-      dockerfile: ../containers/server/Dockerfile
-    networks:
-      - app
-    volumes:
-      - ./front/dist/:/dist:cached
+  # UNUSED (for now)
+  # - Disabled because docker complains if there's no dist/ folder
+  #  front:
+  #    # Static server
+  #    build:
+  #      context: ./front/dist
+  #      dockerfile: ../containers/server/Dockerfile
+  #    networks:
+  #      - app
+  #    volumes:
+  #      - ./front/dist/:/dist:cached
 
   ## APP ENGINE
 

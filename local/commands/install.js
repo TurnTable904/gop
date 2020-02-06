@@ -12,6 +12,7 @@ module.exports.handler = async argv => {
   const tasks = new Listr([
     require('../tasks/stop'),
     require('../tasks/cleanup'),
+    require('../tasks/build-front'),
     require('../tasks/provision-elasticsearch'),
     require('../tasks/install-minds'),
     require('../tasks/restart'),
