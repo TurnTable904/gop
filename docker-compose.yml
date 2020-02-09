@@ -182,8 +182,8 @@ services:
     networks:
       - app
     volumes:
-      - ./front/:/var/www/Minds/front:cached
-      - ./engine/:/var/www/Minds/engine:cached
+      - ./front/:/var/www/Minds/front:delegated
+      - ./engine/:/var/www/Minds/engine:delegated
       - keys:/.dev
     depends_on:
       cassandra:
