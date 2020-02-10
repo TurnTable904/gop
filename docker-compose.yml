@@ -13,13 +13,12 @@ services:
     mem_limit: 512MB
     depends_on:
       - php-fpm
-      - front-live-server
+    networks:
+      - app
     ports:
       - "8080:80"
-    networks:
-      app:
-        aliases:
-          - minds.local
+    environment:
+      - UPSTREAM_ENDPOINT
     volumes:
       - ./front/:/var/www/Minds/front:cached
 
@@ -35,7 +34,7 @@ services:
     networks:
       - app
     volumes:
-      - ./front/:/var/www/Minds/front:cached
+      - ./front/:/var/www/Minds/front:delegated
 
   front-live-server-compiler:
     build:

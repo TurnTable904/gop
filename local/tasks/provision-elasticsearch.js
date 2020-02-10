@@ -1,20 +1,20 @@
 const Listr = require('listr');
-const exec = require('../lib/exec');
+const doco = require('../lib/doco');
 
 module.exports = {
   title: 'Provisioning ElasticSearch',
   task: () => new Listr([
     {
       title: 'Creating 5.x-compatible indices',
-      task: () => exec('docker-compose', ['run', 'elasticsearch-legacy-provisioner'])
+      task: () => doco('run', 'elasticsearch-legacy-provisioner')
     },
     {
       title: 'Stopping 5.x container',
-      task: () => exec('docker-compose', ['stop', 'elasticsearch-legacy'])
+      task: () => doco('stop', 'elasticsearch-legacy')
     },
     {
       title: 'Creating indices',
-      task: () => exec('docker-compose', ['run', 'elasticsearch-provisioner'])
+      task: () => doco('run', 'elasticsearch-provisioner')
     },
   ])
 };

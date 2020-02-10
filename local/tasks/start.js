@@ -1,7 +1,6 @@
-const exec = require('../lib/exec');
+const doco = require('../lib/doco');
 
 module.exports = {
   title: 'Starting containers',
-  task: () => exec('docker-compose', ['up', '-d', 'nginx'])
+  task: () => doco('up', '-d', 'nginx')
 };
-

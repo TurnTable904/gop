@@ -4,6 +4,7 @@ const fs = require('fs');
 const rimraf = require('@alexbinary/rimraf');
 const exec = require('../lib/exec');
 const cwd = require('../lib/cwd');
+const doco = require('../lib/doco');
 
 const exists = util.promisify(fs.exists);
 const rename = util.promisify(fs.rename);
@@ -13,7 +14,7 @@ module.exports = {
   task: () => new Listr([
     {
       title: 'Purging containers',
-      task: () => exec('docker-compose', ['down', '-v', '--rmi=all'])
+      task: () => doco('down', '-v', '--rmi=all')
     },
     {
       title: 'Pruning engine',

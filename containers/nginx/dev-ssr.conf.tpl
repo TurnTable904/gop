@@ -4,6 +4,8 @@ map $http_upgrade $connection_upgrade {
 }
 
 server {
+    resolver ${DOCKER_RESOLVER} ipv6=off;
+
     listen 80;
     listen [::]:80 default ipv6only=on;
     listen 8080;
@@ -26,12 +28,14 @@ server {
     sendfile off;
 
     location / {
+        set $upstream http://${UPSTREAM_ENDPOINT};
+
         port_in_redirect off;
 
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Host nginx;
         proxy_set_header X-NginX-Proxy true;
-        proxy_pass http://front-live-server:4200/;
+        proxy_pass $upstream;
         proxy_redirect off;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;

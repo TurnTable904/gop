@@ -11,28 +11,19 @@ module.exports = {
     {
       title: 'Building app',
       task: () => exec.in('front', 'npm', ['run', 'build:dev', '--', '--watch=false'], {
-        env: {
-          ...process.env,
-          NODE_OPTIONS: '--max_old_space_size=4096'
-        }
+        NODE_OPTIONS: '--max_old_space_size=4096'
       })
     },
     {
       title: 'Building SSR server',
       task: () => exec.in('front', 'npx', ['ng', 'run', 'minds:server:production'], {
-        env: {
-          ...process.env,
-          NODE_OPTIONS: '--max_old_space_size=4096'
-        }
+        NODE_OPTIONS: '--max_old_space_size=4096'
       })
     },
     {
       title: 'Compiling SSR server',
       task: () => exec.in('front', 'npm', ['run', 'compile:server'], {
-        env: {
-          ...process.env,
-          NODE_OPTIONS: '--max_old_space_size=4096'
-        }
+        NODE_OPTIONS: '--max_old_space_size=4096'
       })
     },
   ])

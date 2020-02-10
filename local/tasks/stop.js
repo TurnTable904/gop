@@ -1,7 +1,6 @@
-const exec = require('../lib/exec');
+const doco = require('../lib/doco');
 
 module.exports = {
   title: 'Stopping containers',
-  task: () => exec('docker-compose', ['down'])
+  task: () => doco('down')
 };
-
