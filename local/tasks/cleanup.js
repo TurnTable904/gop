@@ -16,6 +16,7 @@ module.exports = {
       title: 'Purging containers',
       task: () => doco('down', '-v', '--rmi=all')
     },
+    require('../tasks/build-containers'),
     {
       title: 'Pruning engine',
       task: async (ctx, task) => {

@@ -23,6 +23,7 @@ return (async () => {
     .command('up', 'Start the containers', require('./commands/up'))
     .command('down', 'Stop the containers', require('./commands/down'))
     .command('restart', 'Restart the containers', require('./commands/restart'))
+    .command('rebuild', 'Rebuild the containers', require('./commands/rebuild'))
     .command('local-serve', 'Serve front locally', require('./commands/local-serve'))
     .command('install', 'Installs and provisions the compose stack', require('./commands/install'))
     .demandCommand(1, 'Please, specify a command.')
