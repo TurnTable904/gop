@@ -2,7 +2,7 @@ const execa = require('execa');
 const fs = require('fs');
 const cwd = require('./cwd');
 
-function exec(relativePath, file, arguments, env = {}) {
+function exec(relativePath, file, arguments, env = {}, opts = {}) {
   const workingDir = cwd(relativePath);
 
   if (!fs.existsSync(workingDir) || !fs.lstatSync(workingDir).isDirectory()) {
@@ -14,12 +14,13 @@ function exec(relativePath, file, arguments, env = {}) {
     env: {
       ...process.env,
       ...env
-    }
+    },
+    ...opts,
   });
 }
 
-module.exports = (file, arguments, env = {}) => {
-  return exec('', file, arguments, env);
+module.exports = (file, arguments, env = {}, opts = {}) => {
+  return exec('', file, arguments, env, opts);
 };
 
 module.exports.in = exec;

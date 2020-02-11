@@ -7,11 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "npm-install-if-needed": "^1.0.16",
-    "yargs": "^15.1.0",
-    "listr": "^0.14.3",
+    "@alexbinary/rimraf": "1.0.2",
     "execa": "^4.0.0",
-    "@alexbinary/rimraf": "1.0.2"
+    "listr": "^0.14.3",
+    "npm-install-if-needed": "^1.0.16",
+    "yargs": "^15.1.0"
   },
   "author": "",
   "license": "GPL-3.0-or-later"
