@@ -1,4 +1,5 @@
 const Listr = require('listr');
+const prompts = require('prompts');
 
 module.exports.handler = async argv => {
   let renderer = 'default';
@@ -7,6 +8,23 @@ module.exports.handler = async argv => {
     renderer = 'verbose';
   } else if (argv.silent) {
     renderer = 'silent'
+  }
+
+  const prompt = await prompts([
+    {
+      type: 'toggle',
+      name: 'confirm',
+      message: 'This will WIPE your local stack, if exists. Proceed?',
+      active: 'Yes',
+      inactive: 'No'
+    }
+  ]);
+
+  console.log('');
+
+  if (!prompt.confirm) {
+    console.log('Cancelled by user');
+    process.exit(1);
   }
 
   const tasks = new Listr([
