@@ -126,3 +126,39 @@ minds-ssr-serve
 ```
 
 The last one might show an error first, but it's normal as your computer might be re-building the server at the time your started it.
+
+## PHPSpec
+
+### Running test suite
+Run
+```sh
+minds phpspec
+```
+
+#### Running a directory
+Run
+```sh
+minds phpspec run --format=pretty --no-code-generation Spec/.../
+```
+
+#### Running a single file
+Run
+```sh
+minds phpspec run --format=pretty --no-code-generation Spec/.../.../MyFileSpec.php
+```
+
+#### Creating a new spec
+
+#### Linux/macOS
+
+Run
+```sh
+minds phpspec describe Minds\\...\\...\\MyClass
+```
+
+#### Windows
+
+Run
+```powershell
+minds phpspec describe Minds\...\...\MyClass
+```

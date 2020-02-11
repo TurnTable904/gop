@@ -19,8 +19,10 @@ switch (process.platform) {
 function buildDefaultArgs() {
   const args = [
     '-f',
-    'docker-compose.yml'
-  ];
+    'docker-compose.yml',
+    '-f',
+    'docker-compose.with-phpspec.yml',
+];
 
   if (useFrontContainer) {
     args.push(

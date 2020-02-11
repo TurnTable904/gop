@@ -25,8 +25,8 @@ return (async () => {
     .command('restart', 'Restart the containers', require('./commands/restart'))
     .command('rebuild', 'Rebuild the containers', require('./commands/rebuild'))
     .command('install', 'Installs and provisions the compose stack', require('./commands/install'))
+    .command('phpspec', 'Runs PHPSpec on a container similar to GitLab CI', require('./commands/phpspec'))
     .demandCommand(1, 'Please, specify a command.')
     .help()
-    .strict()
     .argv;
 })();
