@@ -16,11 +16,15 @@ This is an optional step, but all examples in this document will be using the al
 ### Linux/macOS
 Add to your ~/.bashrc (or ~/.zshrc) file
 ```sh
-alias minds=/path/to/minds/local/local
-alias minds-front-build=/path/to/minds/local/front-build
-alias minds-ssr-build=/path/to/minds/local/ssr-build
-alias minds-ssr-serve=/path/to/minds/local/ssr-serve
+export $MINDSROOT=/path/to/minds
+
+alias minds=$MINDSROOT/local/local
+alias minds-front-build=$MINDSROOT/local/front-build
+alias minds-ssr-build=$MINDSROOT/local/ssr-build
+alias minds-ssr-serve=$MINDSROOT/local/ssr-serve
 ```
+
+After saving the profile script, restart your terminal windows.
 
 ### Windows
 Open PowerShell and run
@@ -29,11 +33,15 @@ echo $profile
 ```
 That command will output the location to your profile script. Edit it and add
 ```powershell
-Set-Alias -Name minds -Value X:\Path\To\minds\local\local.ps1
-Set-Alias -Name minds-front-build -Value X:\Path\To\minds\local\front-build.ps1
-Set-Alias -Name minds-ssr-build -Value X:\Path\To\minds\local\ssr-build.ps1
-Set-Alias -Name minds-ssr-serve -Value X:\Path\To\minds\local\ssr-serve.ps1
+$env:MINDSROOT = 'X:\Path\To\minds'
+
+Set-Alias -Name minds -Value $env:MINDSROOT\local\local.ps1
+Set-Alias -Name minds-front-build -Value $env:MINDSROOT\local\front-build.ps1
+Set-Alias -Name minds-ssr-build -Value $env:MINDSROOT\local\ssr-build.ps1
+Set-Alias -Name minds-ssr-serve -Value $env:MINDSROOT\local\ssr-serve.ps1
 ```
+
+After saving the profile script, restart your terminal windows.
 
 ## Preparing your OS
 
@@ -41,12 +49,11 @@ Set-Alias -Name minds-ssr-serve -Value X:\Path\To\minds\local\ssr-serve.ps1
 - Nothing to do.
 
 ### macOS
-- Setup Docker VM to have at least 6.5GB and it uses at leas 2 CPUs.
+- Setup Docker VM to have at least 7.5GB and it uses at least 2 CPUs.
 
 ### Windows
-- Setup Docker VM to have at least 6.5GB and it uses at leas 2 CPUs.
+- Setup Docker VM to have at least 7.5GB and it uses at least 2 CPUs.
 - Enable Shared Drives availability to the drive that has the Minds repository (https://docs.docker.com/docker-for-windows/#file-sharing).
-
 
 ## Installing Minds
 > **Important!**
