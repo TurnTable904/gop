@@ -24,7 +24,9 @@ function buildDefaultArgs() {
     'docker-compose.with-phpspec.yml',
 ];
 
-  if (useFrontContainer) {
+  const forceNoFront = Boolean(parseInt(process.env['MINDS_LOCAL_NO_FRONT']));
+
+  if (useFrontContainer && !forceNoFront) {
     args.push(
       '-f',
       'docker-compose.with-front.yml'
