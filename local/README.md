@@ -1,12 +1,18 @@
 # Local Stack
 
 ## Requirements
+- Any modern x86_64 multi-core CPU that supports virtualization.
+- 16GB of RAM (of which around 7.5GB should be devoted to Docker VM on macOS and Windows).
+- 3GB storage for Minds repositories and packages, and at least 20GB for Docker VM/Images.
+- Internet connectivity (only needed for downloading and provisioning the stack).
+
+### Software requirements
 - Git
 - Docker 18 or higher, with docker-compose
 - Node.js 10.x or higher, with npm and npx
 - Port 8080 open
 
-### Extra requirements for Windows
+#### Extra requirements for Windows
 - Windows 10 Pro with Hyper-V enabled (for Docker)
 - PowerShell
 
