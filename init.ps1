@@ -1,34 +1,48 @@
-param(
+[CmdletBinding()]
+Param(
     [switch] $Ssh
 )
 
+Set-StrictMode -Version latest
+$ErrorActionPreference = "Stop"
+
 Push-Location $PSScriptRoot
 
-try {
+function Exec
+{
+    [CmdletBinding()]
+    param(
+        [Parameter(Position=0,Mandatory=1)][scriptblock]$cmd,
+        [Parameter(Position=1,Mandatory=0)][string]$errorMessage = ("Error executing command {0}" -f $cmd)
+    )
+    & $cmd
+    if ($lastexitcode -ne 0) {
+        Throw ("Exec: " + $errorMessage)
+    }
+}
+
+Try {
     $RemoteRoot = "https://gitlab.com/minds"
 
-    if ($Ssh) {
+    If ($Ssh) {
         $RemoteRoot = "git@gitlab.com:minds"
     }
 
-    # Clone the main repo
-    git checkout master
-    git pull
+    Write-Host "Using $RemoteRoot"
+
+    # Fetch latest
+    Exec { git pull }
 
     # Setup the other repos
-    git clone $RemoteRoot/front.git front --config core.autocrlf=input
-    git clone $RemoteRoot/engine.git engine --config core.autocrlf=input
-    git clone $RemoteRoot/sockets.git socket --config core.autocrlf=input
-
-    if ($LastExitCode -ne 0) {
-        throw "Something failed"
-    }
+    Exec { git clone $RemoteRoot/front.git front --config core.autocrlf=input }
+    Exec { git clone $RemoteRoot/engine.git engine --config core.autocrlf=input }
+    Exec { git clone $RemoteRoot/sockets.git sockets --config core.autocrlf=input }
 }
-catch {
+Catch {
     Pop-Location
-    exit 1
+    Exit 1
 }
-finally {
+Finally {
     Pop-Location
-    exit 0
+    Exit 0
 }

@@ -31,10 +31,9 @@ fi
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Clone the main repo
-git checkout master
 git pull
 
 # Setup the other repos
 git clone $REMOTE_ROOT/front front --config core.autocrlf=input
 git clone $REMOTE_ROOT/engine engine --config core.autocrlf=input
-git clone $REMOTE_ROOT/sockets socket --config core.autocrlf=input
+git clone $REMOTE_ROOT/sockets sockets --config core.autocrlf=input
