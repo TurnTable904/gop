@@ -1,16 +1,29 @@
 # Local Stack
 
 ## Requirements
-- git
-- docker 18 or higher, with docker-compose
-- node 10.x or higher, with npm and npx
-- port 8080 open
+- Git
+- Docker 18 or higher, with docker-compose
+- Node.js 10.x or higher, with npm and npx
+- Port 8080 open
 
 ### Extra requirements for Windows
-- Windows 10 Pro (needed for Docker)
+- Windows 10 Pro with Hyper-V enabled (for Docker)
 - PowerShell
 
-## Creating an alias
+## Before installing
+
+### Windows line endings
+Git on Windows defaults `core.autocrlf` setting to `true`, which causes installation, provisioning and entry-point scripts to become corrupted with Windows-style line endings.
+
+Before installing Minds, make sure you change it to `input` either globally **BEFORE** downloading the repositories (1); or by setting it when cloning (2).
+
+(1): `git config --global core.autocrlf input`
+
+(2): `git clone [repo] --config core.autocrlf=input`
+
+If you already downloaded Minds repositories, you'll have to either download it again, or do a hard reset in all the repositories, as seen on https://stackoverflow.com/a/10118312.
+
+## Run-from-anywhere aliases
 This is an optional step, but all examples in this document will be using the alias.
 
 ### Linux/macOS
@@ -66,6 +79,8 @@ Run
 ```sh
 minds install
 ```
+
+> If you had errors while on the build or install steps and you're on Windows, make sure you [read this](#windows-line-endings).
 
 ## Running
 
