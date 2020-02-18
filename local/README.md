@@ -29,6 +29,8 @@ Before installing Minds, make sure you change it to `input` either globally **BE
 
 If you already downloaded Minds repositories, you'll have to either download it again, or do a hard reset in all the repositories, as seen on https://stackoverflow.com/a/10118312.
 
+You will get a warning every time your run the local stack if any of the repositories has the wrong `core.autocrlf` value.
+
 ## Run-from-anywhere aliases
 This is an optional step, but all examples in this document will be using the alias.
 
@@ -86,7 +88,15 @@ Run
 minds install
 ```
 
-> If you had errors while on the build or install steps and you're on Windows, make sure you [read this](#windows-line-endings).
+### Troubleshooting
+
+#### Random errors when building or starting the Docker containers
+
+Git might corrupted Docker container scripts line endings. [Read this](#windows-line-endings).
+
+#### There are random ENOENT or EPERM errors when cleaning up or building the frontend app during install on Windows
+
+Close any application that might be actively watching the folder, such as VSCode, TortoiseGit, etc. If it still fails, reboot your computer to release any rogue lock.
 
 ## Running
 
@@ -118,24 +128,6 @@ minds rebuild
 ```
 
 ## Running the frontend stack
-
-### Linux
-
-#### App
-Run
-```sh
-minds-front-build
-```
-
-#### SSR Server
-SSR server runs inside two Docker containers: `front-live-server` and `front-live-server-compiler`.
-
-To check out their activity, open a terminal in the `minds` directory and run
-```sh
-docker-compose logs -f --tail=40 front-live-server front-live-server-compiler
-```
-
-### macOS/Windows
 
 #### App
 Run
